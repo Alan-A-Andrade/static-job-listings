@@ -20,7 +20,7 @@ export default function FilteredTagBox(Props) {
 
         <nav>
           <div className="selected-tag-list">
-            {Props.tagList.map(e => <SelectedTagBox><h1>{e}</h1><div className="iconBox" onClick={() => handleClick(e)}><img src={cancelIcon} alt="" /></div></SelectedTagBox>)}
+            {Props.tagList.map((e, id) => <SelectedTagBox key={id}><h1>{e}</h1><div className="iconBox" onClick={() => handleClick(e)}><img src={cancelIcon} alt="" /></div></SelectedTagBox>)}
           </div>
           <h1 className="cancel-button" onClick={() => Props.onClick([])}>Clear</h1>
         </nav>
@@ -32,14 +32,26 @@ export default function FilteredTagBox(Props) {
 
 const TagContentBox = styled.div`
 width: 100%;
-height: 60px;
+min-height: 60px;
 
 padding: 0px 156px;
+position: absolute;
+top: 126px;
+animation: fade-in 0.1s;
 
-position:relative;
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 
 .selected-tag-list{
   display: flex;
+  flex-wrap:wrap;
   gap: 15px;
 }
 
@@ -52,12 +64,14 @@ position:relative;
     transition: 0.2s ease-in-out;
     text-decoration: underline;
 
+    cursor: pointer;
+
   }
 }
 
 nav{
   width: 100%;
-  height: 100%;
+  min-height: 60px;
   background-color: hsl(180, 52%, 96%);
   border-radius: 6px;
   box-shadow: 5px 5px 20px 5px hsla(180, 29%, 50%, 0.3);
@@ -65,12 +79,20 @@ nav{
   align-items:center;
   justify-content: space-between;
   gap: 15px;
-  padding: 0px 20px;
+  padding: 10px 20px;
 }
+
+@media screen and (max-width: 1240px) {
+  
+  padding: 0px 20px;
+
+
+}
+
 `
 
 const SelectedTagBox = styled.div`
-  height: 1.5em;
+  height: 1.8em;
   background-color:hsla(180, 8%, 52%, 0.1);
 
   color: hsl(180, 29%, 50%);
@@ -105,6 +127,8 @@ const SelectedTagBox = styled.div`
     color: hsl(180, 52%, 96%);
     background-color:hsl(180, 14%, 20%);
     transition: 0.2s ease-in-out;
+
+    cursor: pointer;
 
   }
   }

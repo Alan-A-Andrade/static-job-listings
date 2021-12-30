@@ -4,7 +4,6 @@ import HeaderBG from "./HeaderBG";
 import styled from "styled-components";
 import JobItem from "./JobItem";
 import { useState } from "react";
-import FilteredTagBox from "./FilteredTagsBox";
 
 
 const listingData = data.default;
@@ -31,11 +30,11 @@ export default function App() {
 
   return (
     <AppStyled>
-      <HeaderBG></HeaderBG>
-      <div className="job-list">
-        <FilteredTagBox onClick={setTagList} tagList={tagList}></FilteredTagBox>
-        {listingData.filter(e => filterTag(e)).map((e, id) => <JobItem onClick={setTagList} tagList={tagList} key={id} data={e} />)}
+      <HeaderBG onClick={setTagList} tagList={tagList} />
 
+      <div className="job-list">
+
+        {listingData.filter(e => filterTag(e)).map((e, id) => <JobItem onClick={setTagList} tagList={tagList} key={id} data={e} />)}
       </div>
       <div className="attribution">
         Challenge by <a href="https://www.frontendmentor.io?ref=challenge" >Frontend Mentor</a>.
@@ -47,20 +46,23 @@ export default function App() {
 
 const AppStyled = styled.div`
 
-background-color:hsl(180, 52%, 96%);
-
-width: 100vw;
+width: 100%;
 display:flex;
 flex-direction:column;
+flex-wrap: wrap;
 align-items:center;
 
 .job-list{
-  padding: 50px 0px;
+  padding: 60px 0px 60px 0px;
   width:100%;
   display:flex;
+  flex-wrap: wrap;
   flex-direction: column;
-  gap: 25px;
+  gap: 30px;
+}
 
+.attribution{
+  padding: 15px;
 }
 
 `

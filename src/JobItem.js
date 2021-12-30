@@ -47,8 +47,7 @@ width: 100%;
 height: 156px;
 
 padding: 0px 156px;
-
-position:relative;
+position: relative;
 
 &:hover .hover-style{
   width: 5px;
@@ -109,6 +108,10 @@ article{
   font-size: 1.3em;
 
   color: hsl(180, 29%, 50%);
+
+  &:hover{
+    cursor: pointer;
+  }
 }
 
 .new, .featured{

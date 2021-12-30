@@ -41,6 +41,7 @@ const TagContainer = styled.h1`
     color: hsl(180, 52%, 96%);
     background-color:hsl(180, 29%, 50%);
     transition: 0.2s ease-in-out;
+    cursor: pointer;
 
   }
 
